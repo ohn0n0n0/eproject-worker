@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Manage Admin</title>		
+        <h:outputStylesheet library="css" name="styles.css"  /> 	
+    </h:head>
+    <h:body> 
+        <h2>Admin List</h2>
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true"/>
+
+            <p:dataTable id="adminlist" var="lst" value="#{dtEditView.cars1}" editable="true" style="margin-bottom:20px">
+                <f:facet name="header">
+                    Admin List
+                </f:facet>
+
+                <h:column>    				
+                    <f:facet name="header">Name</f:facet>    				
+                    <h:inputText value="#{manageAdmin.Username}"
+                                 size="10" rendered="#{manageAdmin.canEdit}" />
+                    <h:outputText value="#{manageAdmin.Username}"
+                                  rendered="#{not employee.canEdit}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Password</f:facet>
+                    <h:inputText value="#{manageAdmin.Password}" 
+                                 size="20" rendered="#{employee.canEdit}" />
+                    <h:outputText value="#{manageAdmin.Password}" 
+                                  rendered="#{not employee.canEdit}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Edit</f:facet>
+                    <h:commandButton value="Edit" 
+                                     action="#{userData.editEmployee}" 
+                                     rendered="#{not employee.canEdit}">        
+                        <f:setPropertyActionListener 
+                            target="#{userData.employee}" value="#{employee}" />
+                    </h:commandButton>
+                </h:column>
+
+                <p:column style="width:32px">
+                    <p:rowEditor />
+                </p:column>
+            </p:dataTable>
+
+
+        </h:form>
+    </h:body>
+</html>

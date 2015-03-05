@@ -61,7 +61,7 @@ public class addAdmin {
             ps.setString(2, pass);
             int x = ps.executeUpdate();
             if (x > 0) {
-                return "success";
+                return "manageAdmin";
             }
         } catch (Exception e) {
             e.printStackTrace();

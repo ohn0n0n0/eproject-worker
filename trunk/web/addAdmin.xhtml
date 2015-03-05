@@ -27,7 +27,7 @@
                     <p:message for="pwd2" display="icon" />
 
 
-                    <p:commandButton value="Log In" update="matchGrid"  onclick="#{addAdmin.insertAdmin()}" icon="ui-icon-check" />
+                    <p:commandButton value="Log In" update="matchGrid"  action="#{addAdmin.insertAdmin()}" icon="ui-icon-check" />
                     <p:commandButton value="Cancel" actionListener="#{addAdmin.closePage()}" icon="ui-icon-close" />
 
                 </h:panelGrid>

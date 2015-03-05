@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
+   <h:head>
+      <title>JSF tutorial</title>		
+      <h:outputStylesheet library="css" name="styles.css"  /> 	
+   </h:head>
+   <h:body> 
+   <h2>DataTable Example</h2>
+   <h:form>
+      <h:dataTable value="#{userData.employees}" var="employee"
+         styleClass="employeeTable"
+         headerClass="employeeTableHeader"
+         rowClasses="employeeTableOddRow,employeeTableEvenRow">
+         <h:column>    				
+            <f:facet name="header">Name</f:facet>    				
+            <h:inputText value="#{employee.name}"
+               size="10" rendered="#{employee.canEdit}" />
+            <h:outputText value="#{employee.name}"
+               rendered="#{not employee.canEdit}" />
+         </h:column>
+         <h:column>
+            <f:facet name="header">Department</f:facet>
+            <h:inputText value="#{employee.department}" 
+               size="20" rendered="#{employee.canEdit}" />
+            <h:outputText value="#{employee.department}" 
+               rendered="#{not employee.canEdit}" />
+         </h:column>
+         <h:column>
+            <f:facet name="header">Age</f:facet>
+            <h:inputText value="#{employee.age}" size="5"
+               rendered="#{employee.canEdit}" />
+            <h:outputText value="#{employee.age}" 
+               rendered="#{not employee.canEdit}" />
+         </h:column>
+         <h:column>
+            <f:facet name="header">Salary</f:facet>
+            <h:inputText value="#{employee.salary}" 
+               size="5" rendered="#{employee.canEdit}" />
+            <h:outputText value="#{employee.salary}" 
+               rendered="#{not employee.canEdit}" />
+         </h:column>
+         <h:column>
+            <f:facet name="header">Edit</f:facet>
+               <h:commandButton value="Edit" 
+                  action="#{userData.editEmployee}" 
+                  rendered="#{not employee.canEdit}">        
+                  <f:setPropertyActionListener 
+                     target="#{userData.employee}" value="#{employee}" />
+               </h:commandButton>
+         </h:column>
+      </h:dataTable>  
+	  <br/>
+	<h:commandButton value="Save Employees"
+          action="#{userData.saveEmployees}" />	  
+   </h:form>
+   </h:body>
+</html>
