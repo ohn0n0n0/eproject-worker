@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Add Admin</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel id="p" header="Add Admin">
+
+                <h:panelGrid columns="3" cellpadding="5" id="matchGrid">
+                    <p:outputLabel for="uname" value="Username:" />
+                    <p:inputText id="uname" value="#{addAdmin.uname}" required="true" label="Username">
+                    </p:inputText>
+                    <p:message for="uname" display="icon" />
+
+
+                    <h:outputLabel for="pwd1" value="Password: *" />
+                    <p:password id="pwd1" value="#{addAdmin.pass}" match="pwd2" label="Password:" required="true" />
+                    <p:message for="pwd1" display="icon" />
+
+                    <h:outputLabel for="pwd2" value="Confirm Password: *" />
+                    <p:password id="pwd2" value="#{addAdmin.pass}" label="Confirm Password:" required="true" />
+                    <p:message for="pwd2" display="icon" />
+
+
+                    <p:commandButton value="Log In" update="matchGrid"  onclick="#{addAdmin.insertAdmin()}" icon="ui-icon-check" />
+                    <p:commandButton value="Cancel" actionListener="#{addAdmin.closePage()}" icon="ui-icon-close" />
+
+                </h:panelGrid>
+
+                <p:messages id="mgs" showDetail="true" autoUpdate="true"/>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+

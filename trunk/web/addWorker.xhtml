@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Register Worker</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel id="p" header="Add Admin">
+
+                <h:panelGrid columns="3" cellpadding="5" id="matchGrid">
+                    <p:outputLabel for="uname" value="Username:" />
+                    <p:inputText id="uname" value="#{addWorkerView.uname}" required="true" label="Username">
+                    </p:inputText>
+                    <p:message for="uname" display="icon" />
+
+
+                    <h:outputLabel for="pwd1" value="Password: *" />
+                    <p:password id="pwd1" value="#{addWorkerView.pass}" match="pwd2" label="Password:" required="true" />
+                    <p:message for="pwd1" display="icon" />
+
+                    <h:outputLabel for="pwd2" value="Confirm Password: *" />
+                    <p:password id="pwd2" value="#{addWorkerView.pass}" label="Confirm Password:" required="true" />
+                    <p:message for="pwd2" display="icon" />
+                    
+                    <p:outputLabel for="fname" value="Full name:" />
+                    <p:inputText id="fname" value="#{addWorkerView.fname}" label="Full name">
+                    </p:inputText>
+                    <p:message for="fname" display="icon" />
+                    
+                    <p:outputLabel for="address" value="Address:" />
+                    <p:inputTextarea id="address" value="#{addWorkerView.address}" rows="3" cols="22" />
+                    <p:message for="address" display="icon" />
+
+                    <p:outputLabel for="birth" value="Birthdate:" />
+                    <p:calendar id="birth" value="#{addWorkerView.birth}" showOn="button" />
+                    <p:message for="birth" display="icon" />
+
+                    <p:outputLabel for="phone" value="Phone:" />
+                    <p:inputMask id="phone" value="#{addWorkerView.phone}" mask="0(999) 999-9999"/>
+                    <p:message for="phone" display="icon" />
+
+                    <p:outputLabel for="city" value="City: " />
+                    <p:selectOneMenu id="city" value="#{addWorkerView.city}" style="width:150px">
+                        <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{addWorkerView.city}" />
+                    </p:selectOneMenu>
+                    <p:message for="city" display="icon" />
+                               
+                    <h:outputLabel for="email" value="Email:" />
+                    <p:inputText id="email" value="#{addWorkerView.email}" label="Email:"/>
+                    <p:message for="email" display="icon" />
+
+                    <h:outputLabel for="image" value="Image: " />
+                    <p:fileUpload id="image" value="#{addWorkerView.image}" mode="simple"/>
+                    <p:message for="image" display="icon" />
+
+                    <p:commandButton value="Log In" update="msgs" actionListener="#{addWorkerView.insertWorker()}" icon="ui-icon-check" />
+                    <p:commandButton value="Cancel" actionListener="#{addWorkerView.closePage()}" icon="ui-icon-close" />
+                    
+
+                </h:panelGrid>
+
+                <p:messages id="msgs" showDetail="true" autoUpdate="true"/>
+
+                <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                    <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                        <h:outputText value="Birthdate: " />
+                        <h:outputText value="#{addWorkerView.birth}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        
+                        <h:outputText value="Phone: " />
+                        <h:outputText id="phoneValue" value="#{addWorkerView.phone}" />
+                    </p:panelGrid>
+                </p:dialog>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+
