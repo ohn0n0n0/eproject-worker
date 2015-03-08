@@ -13,64 +13,67 @@
 
                 <h:panelGrid columns="3" cellpadding="5" id="matchGrid">
                     <p:outputLabel for="uname" value="Username:" />
-                    <p:inputText id="uname" value="#{addRecruiterView.uname}" required="true" label="Username">
+                    <p:inputText id="uname" value="#{manageRecruiter.uname}" required="true" label="Username">
                     </p:inputText>
                     <p:message for="uname" display="icon" />
 
 
                     <h:outputLabel for="pwd1" value="Password: *" />
-                    <p:password id="pwd1" value="#{addRecruiterView.pass}" match="pwd2" label="Password:" required="true" />
+                    <p:password id="pwd1" value="#{manageRecruiter.pass}" match="pwd2" label="Password:" required="true" />
                     <p:message for="pwd1" display="icon" />
 
                     <h:outputLabel for="pwd2" value="Confirm Password: *" />
-                    <p:password id="pwd2" value="#{addRecruiterView.pass}" label="Confirm Password:" required="true" />
+                    <p:password id="pwd2" value="#{manageRecruiter.pass}" label="Confirm Password:" required="true" />
                     <p:message for="pwd2" display="icon" />
 
                     <p:outputLabel for="fname" value="Name:" />
-                    <p:inputText id="fname" value="#{addRecruiterView.fname}" required="true" label="Full name">
+                    <p:inputText id="fname" value="#{manageRecruiter.fname}" required="true" label="Full name">
                     </p:inputText>
                     <p:message for="fname" display="icon" />
 
                     <p:outputLabel for="address" value="Address:" />
-                    <p:inputTextarea id="address" value="#{addRecruiterView.address}" rows="3" cols="22" />
+                    <p:inputTextarea id="address" value="#{manageRecruiter.address}" rows="3" cols="22" />
                     <p:message for="address" display="icon" />
 
                     <p:outputLabel for="phone" value="Phone:" />
-                    <p:inputMask id="phone" value="#{addRecruiterView.phone}" mask="(999) 999-9999"/>
+                    <p:inputMask id="phone" value="#{manageRecruiter.phone}" mask="(999) 999-9999"/>
                     <p:message for="phone" display="icon" />
 
                     <p:outputLabel for="sector" value="Sector: " />
-                    <p:selectOneMenu id="sector" value="#{addRecruiterView.sector}" style="width:150px">
+                    <p:selectOneMenu id="sector" value="#{manageRecruiter.sector}" style="width:150px">
                         <f:selectItem itemLabel="Select Sector" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{addRecruiterView.sector}" />
+                        <f:selectItems value="#{manageRecruiter.sector}" />
                     </p:selectOneMenu>
                     <p:message for="sector" display="icon" />
-                    
+
                     <h:outputLabel for="introduced" value="Introduced:" />
-                    <p:inputText id="introduced" value="#{addRecruiterView.introducted}" label="Introduced:"/>
+                    <p:inputText id="introduced" value="#{manageRecruiter.introducted}" label="Introduced:"/>
                     <p:message for="introduced:" display="icon" />
 
                     <h:outputLabel for="email" value="Email:" />
-                    <p:inputText id="email" value="#{addRecruiterView.email}" label="Email:"/>
+                    <p:inputText id="email" value="#{manageRecruiter.email}" label="Email:"/>
                     <p:message for="email" display="icon" />
 
                     <h:outputLabel for="logo" value="Logo: " />
-                    <p:fileUpload id="logo" value="#{addRecruiterView.logo}" mode="simple"/>
+                    
+                    <p:fileUpload id="logo" 
+                                  value="#{manageRecruiter.logo}"
+                                  allowTypes="/(\.|\/)(gif|jpeg|png|jpg|JPG|GIF|JPEG|PNG)$/" 
+                                  mode="simple"/>
                     <p:message for="logo" display="icon" />
 
-                    <p:commandButton value="Register" update="msgs" actionListener="#{addRecruiterView.insertRecruiter()}" icon="ui-icon-check" />
-                    <p:commandButton value="Cancel" actionListener="#{addRecruiterView.closePage()}" icon="ui-icon-close" />
+                    <p:commandButton value="Register" update="msgs" actionListener="#{manageRecruiter.insertRecruiter()}" icon="ui-icon-check" />
+                    <p:commandButton value="Cancel" actionListener="#{manageRecruiter.closePage()}" icon="ui-icon-close" />
 
-
+                    
                 </h:panelGrid>
 
                 <p:messages id="msgs" showDetail="true" autoUpdate="true"/>
 
                 <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
                     <p:panelGrid id="display" columns="2" columnClasses="label,value">
-                        
                         <h:outputText value="Phone: " />
-                        <h:outputText id="phoneValue" value="#{addRecruiterView.phone}" />
+                        <h:outputText id="phoneValue" value="#{manageRecruiter.phone}" />
                     </p:panelGrid>
                 </p:dialog>
             </p:panel>

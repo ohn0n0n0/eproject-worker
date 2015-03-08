@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Manage Recruiter</title>		
+        <h:outputStylesheet library="css" name="styles.css"  /> 	
+    </h:head>
+    <h:body> 
+        <h1 align="center">Recruiter list</h1>
+        <h:form id="frm">
+            <h:dataTable width="100%" border="1"                            
+                         var="lh" id="table"
+                         value="#{manageRecruiter.allRecruiter}"
+                         >
+                <h:column id="uname" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Username"/>
+                    </f:facet>
+                    <h:outputText id="ml" value="#{lh.uname}"/>
+                </h:column>
+                <h:column id="pass" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Password"/>
+                    </f:facet>
+                    <h:outputText id="tl" value="#{lh.pass}"/>
+                </h:column>
+                
+                <h:column id="fname" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Full name "/>
+                    </f:facet>
+                    <h:outputText id="tl" value="#{lh.fname}"/>
+                </h:column>
+                
+                <h:column id="sector" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="sector "/>
+                    </f:facet>
+                    <h:outputText id="tl" value="#{lh.sector}"/>
+                </h:column>
+                
+                <h:column id="address" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Address "/>
+                    </f:facet>
+                    <h:outputText id="tl" value="#{lh.address}"/>
+                </h:column>
+                
+                <h:column id="phone" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Phone "/>
+                    </f:facet>
+                    <h:outputText id="tl" value="#{lh.phone}"/>
+                </h:column>
+                
+                <h:column id="email" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Email "/>
+                    </f:facet>
+                    <h:outputText id="tl" value="#{lh.email}"/>
+                </h:column>
+                
+                <h:column id="introduced" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Introduced "/>
+                    </f:facet>
+                    <h:outputText id="tl" value="#{lh.introducted}"/>
+                </h:column>
+
+                <h:column id="website" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Website "/>
+                    </f:facet>
+                    <h:outputText id="tl" value="#{lh.website}"/>
+                </h:column>
+                
+                <h:column id="logo" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Logo "/>
+                    </f:facet>
+                    <h:outputText id="tl" value="#{lh.logo}"/>
+                </h:column>
+                
+                <h:column id="actions" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:commandButton value="Insert New"  action="addRecruiter.xhtml" immediate="true" />
+                    </f:facet>
+                    <h:commandLink value="Edit" immediate="true"
+                                   actionListener="#{manageAdmin.editAdmin}" action="editAdmin.xhtml"/> -
+                    <h:commandLink value="Delete" actionListener="#{manageAdmin.deleteAdmin}">
+                        
+                    </h:commandLink>
+                </h:column>
+            </h:dataTable>
+            
+        </h:form>
+    </h:body>
+</html>

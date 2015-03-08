@@ -17,71 +17,71 @@
                     <p:message for="uname" display="icon" />
                     
                     <p:outputLabel for="sector" value="Sector: " />
-                    <p:selectOneMenu id="sector" value="#{addProfileWorkerView.sector}" style="width:200px">
+                    <p:selectOneMenu id="sector" value="#{manageProfileRecruiter.sector}" style="width:200px">
                         <f:selectItem itemLabel="Select Sector" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{addRecruiterView.sector}" />
+                        <f:selectItems value="#{manageProfileRecruiter.sector}" />
                     </p:selectOneMenu>
                     <p:message for="sector" display="icon" />
                     
                     <p:outputLabel for="time" value="Work time: " />
-                    <p:selectOneMenu id="time" value="#{addProfileWorkerView.time}" style="width:200px">
+                    <p:selectOneMenu id="time" value="#{manageProfileRecruiter.time}" style="width:200px">
                         <f:selectItem itemLabel="Select Work time" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{addProfileWorkerView.time}" />
+                        <f:selectItems value="#{manageProfileRecruiter.time}" />
                     </p:selectOneMenu>
                     <p:message for="time" display="icon" />
                     
                     <p:outputLabel for="city" value="City: " />
-                    <p:selectOneMenu id="city" value="#{addProfileWorkerView.city}" style="width:200px">
+                    <p:selectOneMenu id="city" value="#{manageProfileRecruiter.city}" style="width:200px">
                         <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{addProfileWorkerView.city}" />
+                        <f:selectItems value="#{manageProfileRecruiter.city}" />
                     </p:selectOneMenu>
                     <p:message for="city" display="icon" />
                     
                     <p:outputLabel for="exp" value="Experience: " />
-                    <p:selectOneMenu id="exp" value="#{addProfileWorkerView.exp}" style="width:200px">
+                    <p:selectOneMenu id="exp" value="#{manageProfileRecruiter.exp}" style="width:200px">
                         <f:selectItem itemLabel="Select Experience" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{addProfileWorkerView.exp}" />
+                        <f:selectItems value="#{manageProfileRecruiter.exp}" />
                     </p:selectOneMenu>
                     <p:message for="exp" display="icon" />
                     
                     <p:outputLabel for="edu" value="Education: " />
-                    <p:selectOneMenu id="edu" value="#{addProfileWorkerView.education}" style="width:200px">
+                    <p:selectOneMenu id="edu" value="#{manageProfileRecruiter.education}" style="width:200px">
                         <f:selectItem itemLabel="Select Education" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{addProfileWorkerView.education}" />
+                        <f:selectItems value="#{manageProfileRecruiter.education}" />
                     </p:selectOneMenu>
                     <p:message for="edu" display="icon" />
                     
                     <p:outputLabel for="salary" value="Salary: " />
-                    <p:selectOneMenu id="salary" value="#{addProfileWorkerView.salary}" style="width:200px">
+                    <p:selectOneMenu id="salary" value="#{manageProfileRecruiter.salary}" style="width:200px">
                         <f:selectItem itemLabel="Select Salary" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{addProfileWorkerView.salary}" />
+                        <f:selectItems value="#{manageProfileRecruiter.salary}" />
                     </p:selectOneMenu>
                     <p:message for="salary" display="icon" />
                     
                     <p:outputLabel for="jp" value="Job Position " />
-                    <p:selectOneMenu id="jp" value="#{addProfileWorkerView.jp}" style="width:200px">
+                    <p:selectOneMenu id="jp" value="#{manageProfileRecruiter.jp}" style="width:200px">
                         <f:selectItem itemLabel="Select Job Position" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{addProfileWorkerView.jp}" />
+                        <f:selectItems value="#{manageProfileRecruiter.jp}" />
                     </p:selectOneMenu>
                     <p:message for="jp" display="icon" />
                     
                     <p:outputLabel for="proCer" value="Professional Certificates: " />
-                    <p:selectOneMenu id="proCer" value="#{addProfileWorkerView.proCer}" style="width:200px">
+                    <p:selectOneMenu id="proCer" value="#{manageProfileRecruiter.proCer}" style="width:200px">
                         <f:selectItem itemLabel="Select Professional Certificates" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{addProfileWorkerView.proCer}" />
+                        <f:selectItems value="#{manageProfileRecruiter.proCer}" />
                     </p:selectOneMenu>
                     <p:message for="proCer" display="icon" />
                     
                     <h:outputLabel for="title" value="Title:" />
-                    <p:inputText id="title" value="#{addProfileWorkerView.title}" label="Title: "/>
+                    <p:inputText id="title" value="#{manageProfileRecruiter.title}" label="Title: "/>
                     <p:message for="title" display="icon" />
 
                     <h:outputLabel for="image" value="Image: " />
-                    <p:fileUpload id="image" value="#{addProfileWorkerView.image}" mode="simple"/>
+                    <p:fileUpload id="image" value="#{manageProfileRecruiter.image}" mode="simple"/>
                     <p:message for="image" display="icon" />
                     
-                    <p:commandButton value="Create" update="msgs" actionListener="#{addProfileWorkerView.addProfile()}" icon="ui-icon-check" />
-                    <p:commandButton value="Cancel" actionListener="#{addProfileWorkerView.closePage()}" icon="ui-icon-close" />
+                    <p:commandButton value="Create" update="msgs" actionListener="#{manageProfileRecruiter.addProfile()}" icon="ui-icon-check" />
+                    <p:commandButton value="Cancel" actionListener="#{manageProfileRecruiter.closePage()}" icon="ui-icon-close" />
 
                 </h:panelGrid>
                 <p:messages id="msgs" showDetail="true" />

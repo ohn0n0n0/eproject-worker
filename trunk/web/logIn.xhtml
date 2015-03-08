@@ -13,17 +13,19 @@
 
                 <h:panelGrid columns="3" cellpadding="5">
                     <p:outputLabel for="uname" value="Username:" />
-                    <p:inputText id="uname" value="#{logIn.uname}" required="true" label="Username">
+                    <p:inputText id="uname" value="#{logIn.uname}" required="true" label="Username"
+                                 requiredMessage="Username isn't empty">
                         
                     </p:inputText>
                     <p:message for="uname" display="icon" />
 
                     <p:outputLabel for="pass" value="Password: " />
-                    <p:password id="pass" value="#{logIn.pass}" required="true" label="Password"/>
-                        
+                    <p:password id="pass" value="#{logIn.pass}" required="true" label="Password"
+                                requiredMessage="Password isn't empty"/>
+                    
                     <p:message for="pass" display="icon" />
 
-                    <p:commandButton value="Log In" update="p" actionListener="logIn.check" icon="ui-icon-check" />
+                    <p:commandButton value="Log In" update="p" actionListener="#{logIn.check}" icon="ui-icon-check" />
                     <p:commandButton value="Cancel" actionListener="logIn.closePage" update="p" icon="ui-icon-close" />
 
 
