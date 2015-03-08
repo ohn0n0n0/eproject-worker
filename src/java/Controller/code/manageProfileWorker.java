@@ -1,10 +1,6 @@
 
 package Controller.code;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.primefaces.model.UploadedFile;
@@ -12,7 +8,7 @@ import org.primefaces.model.UploadedFile;
 
 @ManagedBean
 @SessionScoped
-public class addProfileRecruiterView {
+public class manageProfileWorker {
 
     private String uname;
 
@@ -32,44 +28,8 @@ public class addProfileRecruiterView {
     private String jp;
     private String proCer;
     private String title;
-    
-    
-    private String job;
-
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
-    }
-
-    public boolean isGender() {
-        return gender;
-    }
-
-    public void setGender(boolean gender) {
-        this.gender = gender;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-    private boolean gender;
-    private Date endTime;
-    private int number;
+    private String marial;
+    private UploadedFile image;
 
     public String getSector() {
         return sector;
@@ -143,30 +103,30 @@ public class addProfileRecruiterView {
         this.title = title;
     }
 
-    public String addProfile() {
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Eproject", "sa", "sa");
-            String sql = "insert into ADMIN values(?,?)";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, uname);
-            ps.setString(2,sector);
-            
-            int x = ps.executeUpdate();
-            if (x > 0) {
-                return "success";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "failed";
+    public String getMarial() {
+        return marial;
+    }
+
+    public void setMarial(String marial) {
+        this.marial = marial;
+    }
+
+    public UploadedFile getImage() {
+        return image;
+    }
+
+    public void setImage(UploadedFile image) {
+        this.image = image;
+    }
+    
+    public void addProfile() {
 
     }
 
     public void closePage() {
 
     }
-    public addProfileRecruiterView() {
+    public manageProfileWorker() {
     }
     
 }

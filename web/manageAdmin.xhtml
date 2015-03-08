@@ -10,46 +10,37 @@
         <h:outputStylesheet library="css" name="styles.css"  /> 	
     </h:head>
     <h:body> 
-        <h2>Admin List</h2>
-        <h:form id="form">
-            <p:growl id="msgs" showDetail="true"/>
-
-            <p:dataTable id="adminlist" var="lst" value="#{dtEditView.cars1}" editable="true" style="margin-bottom:20px">
-                <f:facet name="header">
-                    Admin List
-                </f:facet>
-
-                <h:column>    				
-                    <f:facet name="header">Name</f:facet>    				
-                    <h:inputText value="#{manageAdmin.Username}"
-                                 size="10" rendered="#{manageAdmin.canEdit}" />
-                    <h:outputText value="#{manageAdmin.Username}"
-                                  rendered="#{not employee.canEdit}" />
+        <h1 align="center">Admin list</h1>
+        <h:form id="frm">
+            <h:dataTable width="100%" border="1"                            
+                         var="lh" id="table"
+                         value="#{manageAdmin.allAdmin}"
+                         >
+                <h:column id="ms" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Username"/>
+                    </f:facet>
+                    <h:outputText id="ml" value="#{lh.uname}"/>
                 </h:column>
-                <h:column>
-                    <f:facet name="header">Password</f:facet>
-                    <h:inputText value="#{manageAdmin.Password}" 
-                                 size="20" rendered="#{employee.canEdit}" />
-                    <h:outputText value="#{manageAdmin.Password}" 
-                                  rendered="#{not employee.canEdit}" />
+                <h:column id="ten" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Password"/>
+                    </f:facet>
+                    <h:outputText id="tl" value="#{lh.pass}"/>
                 </h:column>
 
-                <h:column>
-                    <f:facet name="header">Edit</f:facet>
-                    <h:commandButton value="Edit" 
-                                     action="#{userData.editEmployee}" 
-                                     rendered="#{not employee.canEdit}">        
-                        <f:setPropertyActionListener 
-                            target="#{userData.employee}" value="#{employee}" />
-                    </h:commandButton>
+                <h:column id="actions" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:commandButton value="Insert New"  action="addAdmin.xhtml" immediate="true" />
+                    </f:facet>
+                    <h:commandLink value="Edit" immediate="true"
+                                   actionListener="#{manageAdmin.editAdmin}" action="editAdmin.xhtml"/> -
+                    <h:commandLink value="Delete" actionListener="#{manageAdmin.deleteAdmin}">
+                        
+                    </h:commandLink>
                 </h:column>
-
-                <p:column style="width:32px">
-                    <p:rowEditor />
-                </p:column>
-            </p:dataTable>
-
-
+            </h:dataTable>
+            
         </h:form>
     </h:body>
 </html>

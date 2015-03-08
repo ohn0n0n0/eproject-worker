@@ -5,36 +5,33 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Add Admin</title>
+        <title>Edit Admin</title>
     </h:head>
     <h:body>
         <h:form>
-            <p:panel id="p" header="Add Admin">
+            <p:panel id="p" header="Edit Admin">
 
                 <h:panelGrid columns="3" cellpadding="5" id="matchGrid">
                     <p:outputLabel for="uname" value="Username:" />
-                    <p:inputText id="uname" value="#{manageAdmin.uname}" required="true" label="Username" 
-                                 requiredMessage="You must enter a Username">
-                        
+                    <p:inputText id="uname" value="#{manageAdmin.uname}" required="true" label="Username">
                     </p:inputText>
                     <p:message for="uname" display="icon" />
 
 
-                    <h:outputLabel for="pwd1" value="Password: *" />
-                    <p:password id="pwd1" value="#{manageAdmin.pass}"  match="pwd2" label="Password:" required="true" 
-                                requiredMessage="Password isn't empty"
-                                validatorMessage="Password need to 6 from 20">
-                        <f:validateLength minimum="6" maximum="20"/>
-                    </p:password>
+                    <h:outputLabel for="pwd" value="Old Password: *" />
+                    <p:password id="pwd" value="#{manageAdmin.oldPass}" label="Old Password:" required="true" />
+                    <p:message for="pwd" display="icon" />
                     
+                    <h:outputLabel for="pwd1" value="New Password: *" />
+                    <p:password id="pwd1" value="#{manageAdmin.pass}" match="pwd2" label="Password:" required="true" />
                     <p:message for="pwd1" display="icon" />
 
-                    <h:outputLabel for="pwd2" value="Confirm Password: *" />
-                    <p:password id="pwd2" value="#{manageAdmin.pass}"  label="Confirm Password:" required="true"  />
+                    <h:outputLabel for="pwd2" value="Confirm New Password: *" />
+                    <p:password id="pwd2" value="#{manageAdmin.pass}" label="Confirm New Password:" required="true" />
                     <p:message for="pwd2" display="icon" />
 
 
-                    <p:commandButton value="Create Admin" update="matchGrid"  action="#{manageAdmin.insertAdmin()}" icon="ui-icon-check" />
+                    <p:commandButton value="Edit" update="matchGrid" onclick="#{manageAdmin.update()}" icon="ui-icon-check" />
                     <p:commandButton value="Cancel" actionListener="#{manageAdmin.closePage()}" icon="ui-icon-close" />
 
                 </h:panelGrid>
