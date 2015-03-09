@@ -13,7 +13,7 @@
 
                 <h:panelGrid columns="3" cellpadding="5" id="matchGrid">
                     <p:outputLabel for="uname" value="Username:" />
-                    <p:inputText id="uname" value="#{manageWorker.uname}" required="true" label="Username">
+                    <p:inputText id="uname" value="#{manageWorker.uname}" required="true" label="Username" disabled="true">
                     </p:inputText>
                     <p:message for="uname" display="icon" />
 
@@ -68,7 +68,7 @@
                                   auto="true"/>
                     <p:message for="image" display="icon" />
 
-                    <p:commandButton value="Register" update="msgs" onclick="#{manageWorker.insertWorker()}" icon="ui-icon-check" />
+                    <p:commandButton value="Upadte" update="msgs" actionListener="#{manageWorker.editWorker()}" icon="ui-icon-check" />
                     <p:commandButton value="Cancel" actionListener="#{manageWorker.closePage()}" icon="ui-icon-close" />
 
 
