@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Register Recruiter</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel id="p" header="Register Recruiter">
+
+                <h:panelGrid columns="3" cellpadding="5" id="matchGrid">
+                    <p:outputLabel for="uname" value="Username:" />
+                    <p:inputText id="uname" value="#{manageRecruiter.uname}" required="true" label="Username">
+                    </p:inputText>
+                    <p:message for="uname" display="icon" />
+
+
+                    <h:outputLabel for="pwd1" value="Password: *" />
+                    <p:password id="pwd1" value="#{manageRecruiter.pass}" match="pwd2" label="Password:" required="true" />
+                    <p:message for="pwd1" display="icon" />
+
+                    <h:outputLabel for="pwd2" value="Confirm Password: *" />
+                    <p:password id="pwd2" value="#{manageRecruiter.pass}" label="Confirm Password:" required="true" />
+                    <p:message for="pwd2" display="icon" />
+
+                    <p:outputLabel for="fname" value="Name:" />
+                    <p:inputText id="fname" value="#{manageRecruiter.fname}" required="true" label="Full name">
+                    </p:inputText>
+                    <p:message for="fname" display="icon" />
+
+                    <p:outputLabel for="address" value="Address:" />
+                    <p:inputTextarea id="address" value="#{manageRecruiter.address}" rows="3" cols="22" />
+                    <p:message for="address" display="icon" />
+
+                    <p:outputLabel for="phone" value="Phone:" />
+                    <p:inputMask id="phone" value="#{manageRecruiter.phone}" mask="(999) 999-9999"/>
+                    <p:message for="phone" display="icon" />
+
+                    <p:outputLabel for="sector" value="Sector: " />
+                    <p:selectOneMenu id="sector" value="#{manageRecruiter.sector}" style="width:150px">
+                        <f:selectItem itemLabel="Select Sector" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{manageRecruiter.sector}" />
+                    </p:selectOneMenu>
+                    <p:message for="sector" display="icon" />
+
+                    <h:outputLabel for="introduced" value="Introduced:" />
+                    <p:inputText id="introduced" value="#{manageRecruiter.introducted}" label="Introduced:"/>
+                    <p:message for="introduced:" display="icon" />
+
+                    <h:outputLabel for="email" value="Email:" />
+                    <p:inputText id="email" value="#{manageRecruiter.email}" label="Email:"/>
+                    <p:message for="email" display="icon" />
+
+                    <h:outputLabel for="logo" value="Logo: " />
+                    
+                    <p:fileUpload id="logo" 
+                                  value="#{manageRecruiter.logo}"
+                                  allowTypes="/(\.|\/)(gif|jpeg|png|jpg|JPG|GIF|JPEG|PNG)$/" 
+                                  mode="simple"/>
+                    <p:message for="logo" display="icon" />
+
+                    <p:commandButton value="Register" update="msgs" actionListener="#{manageRecruiter.insertRecruiter()}" icon="ui-icon-check" />
+                    <p:commandButton value="Cancel" actionListener="#{manageRecruiter.closePage()}" icon="ui-icon-close" />
+
+                    
+                </h:panelGrid>
+
+                <p:messages id="msgs" showDetail="true" autoUpdate="true"/>
+
+                <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                    <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                        <h:outputText value="Phone: " />
+                        <h:outputText id="phoneValue" value="#{manageRecruiter.phone}" />
+                    </p:panelGrid>
+                </p:dialog>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+

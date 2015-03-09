@@ -13,6 +13,8 @@ import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -121,8 +123,28 @@ public class manageWorker {
     private String email;
     private String city;
     private UploadedFile image;
+    private int rate;
 
-    public manageWorker(String uname, String pass, String fname, boolean gender, String address, Date birth, String identity, String phone, String email, String city, UploadedFile image) {
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    private boolean status;
+
+    public manageWorker(String uname, String pass, String fname, boolean gender, String address, Date birth,
+            String identity, String phone, String email, String city,
+            int rate, boolean status) {
         this.uname = uname;
         this.pass = pass;
         this.fname = fname;
@@ -133,7 +155,9 @@ public class manageWorker {
         this.phone = phone;
         this.email = email;
         this.city = city;
-        this.image = image;
+        //this.image = image;
+        this.rate = rate;
+        this.status = status;
     }
 
     public UploadedFile getImage() {
@@ -156,11 +180,11 @@ public class manageWorker {
             ps.setString(3, fname);
             ps.setBoolean(4, gender);
             ps.setString(5, address);
-            ps.setString(6,birth.toString());
+            ps.setString(6, birth.toString());
             ps.setString(7, identity);
             ps.setString(8, phone);
             ps.setString(9, email);
-            ps.setInt(10,city.indexOf(getCity()));
+            ps.setInt(10, city.indexOf(getCity()));
             ps.setString(11, image.toString());
             int x = ps.executeUpdate();
             if (x > 0) {
@@ -178,6 +202,37 @@ public class manageWorker {
     }
 
     public manageWorker() {
+    }
+
+    public ArrayList<manageWorker> getAllWorker() {
+        ArrayList<manageWorker> lst = new ArrayList<manageWorker>();
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Eproject", "sa", "sa");
+            ResultSet rs = con.createStatement().executeQuery("select * from WORKER");
+            while (rs.next()) {
+                manageWorker lh = new manageWorker(
+                        rs.getString(1),
+                        rs.getString(2), 
+                        rs.getString(3),
+                        rs.getBoolean(4), 
+                         rs.getString(5),
+                        rs.getDate(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        //rs.getURL(11),
+                        rs.getInt(12),
+                        rs.getBoolean(13));
+
+                lst.add(lh);
+            }
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lst;
     }
 
     public void handleFileUpload(FileUploadEvent event) {
@@ -205,14 +260,23 @@ public class manageWorker {
      *
      * @param evt
      */
-    public void editAdmin(ActionEvent evt) {
+    public void editWorker(ActionEvent evt) {
         // We get the table object
         HtmlDataTable table = getParentDatatable((UIComponent) evt.getSource());
         // We get the object on the selected line.
         Object o = table.getRowData();
-        manageAdmin lh = (manageAdmin) o;
-        //this.uname = lh.uname;
-        //this.pass = lh.pass;
+        manageWorker lh = (manageWorker) o;
+        this.uname = lh.uname;
+        this.pass = lh.pass;
+        this.fname = lh.fname;
+        this.gender = lh.gender;
+        this.address = lh.address;
+        this.birth = lh.birth;
+        this.identity = lh.identity;
+        this.phone = lh.phone;
+        this.email = lh.email;
+        this.city = lh.city;
+        this.image = lh.image;
     }
 
     // Method to get the HtmlDataTable.
@@ -254,7 +318,7 @@ public class manageWorker {
      *
      * @param evt
      */
-    public void deleteAdmin(ActionEvent evt) {
+    public void deleteWorker(ActionEvent evt) {
         // We get the table object
         HtmlDataTable table = getParentDatatable((UIComponent) evt.getSource());
         // We get the object on the selected line.

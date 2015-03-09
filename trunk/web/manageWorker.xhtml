@@ -1,61 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"   
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core">
-   <h:head>
-      <title>JSF tutorial</title>		
-      <h:outputStylesheet library="css" name="styles.css"  /> 	
-   </h:head>
-   <h:body> 
-   <h2>DataTable Example</h2>
-   <h:form>
-      <h:dataTable value="#{userData.employees}" var="employee"
-         styleClass="employeeTable"
-         headerClass="employeeTableHeader"
-         rowClasses="employeeTableOddRow,employeeTableEvenRow">
-         <h:column>    				
-            <f:facet name="header">Name</f:facet>    				
-            <h:inputText value="#{employee.name}"
-               size="10" rendered="#{employee.canEdit}" />
-            <h:outputText value="#{employee.name}"
-               rendered="#{not employee.canEdit}" />
-         </h:column>
-         <h:column>
-            <f:facet name="header">Department</f:facet>
-            <h:inputText value="#{employee.department}" 
-               size="20" rendered="#{employee.canEdit}" />
-            <h:outputText value="#{employee.department}" 
-               rendered="#{not employee.canEdit}" />
-         </h:column>
-         <h:column>
-            <f:facet name="header">Age</f:facet>
-            <h:inputText value="#{employee.age}" size="5"
-               rendered="#{employee.canEdit}" />
-            <h:outputText value="#{employee.age}" 
-               rendered="#{not employee.canEdit}" />
-         </h:column>
-         <h:column>
-            <f:facet name="header">Salary</f:facet>
-            <h:inputText value="#{employee.salary}" 
-               size="5" rendered="#{employee.canEdit}" />
-            <h:outputText value="#{employee.salary}" 
-               rendered="#{not employee.canEdit}" />
-         </h:column>
-         <h:column>
-            <f:facet name="header">Edit</f:facet>
-               <h:commandButton value="Edit" 
-                  action="#{userData.editEmployee}" 
-                  rendered="#{not employee.canEdit}">        
-                  <f:setPropertyActionListener 
-                     target="#{userData.employee}" value="#{employee}" />
-               </h:commandButton>
-         </h:column>
-      </h:dataTable>  
-	  <br/>
-	<h:commandButton value="Save Employees"
-          action="#{userData.saveEmployees}" />	  
-   </h:form>
-   </h:body>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Manage Worker</title>		
+        	
+    </h:head>
+    <h:body> 
+        <h1 align="center">Worker list</h1>
+        <h:form id="frmWorker">
+            <h:dataTable width="100%" border="1" var="lh1" id="tableWorker"
+                         value="#{manageWorker.allWorker}"
+                         >
+                <h:column id="aa" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Username"/>
+                    </f:facet>
+                    <h:outputText id="a" value="#{lh1.uname}"/>
+                </h:column>
+                <h:column id="bb" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Password"/>
+                    </f:facet>
+                    <h:outputText id="b" value="#{lh1.pass}"/>
+                </h:column>
+
+                <h:column id="cc" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Full name"/>
+                    </f:facet>
+                    <h:outputText id="c" value="#{lh1.fname}"/>
+                </h:column>
+                
+                <h:column id="dd" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Gender"/>
+                    </f:facet>
+                    <h:outputText id="d" value="#{lh1.gender}"/>
+                </h:column>
+                
+                <h:column id="ee" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Address"/>
+                    </f:facet>
+                    <h:outputText id="e" value="#{lh1.address}"/>
+                </h:column>
+                
+                <h:column id="ff" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Birthdate"/>
+                    </f:facet>
+                    <h:outputText id="f" value="#{lh.birth}"/>
+                </h:column>
+                
+                <h:column id="gg" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Identity Card"/>
+                    </f:facet>
+                    <h:outputText id="g" value="#{lh1.identity}"/>
+                </h:column>
+                
+                <h:column id="hh" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Phone"/>
+                    </f:facet>
+                    <h:outputText id="h" value="#{lh1.phone}"/>
+                </h:column>
+                
+                <h:column id="ii" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Email"/>
+                    </f:facet>
+                    <h:outputText id="i" value="#{lh1.email}"/>
+                </h:column>
+                
+                <h:column id="jj" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="City"/>
+                    </f:facet>
+                    <h:outputText id="j" value="#{lh1.city}"/>
+                </h:column>
+                
+                <h:column id="kk" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Image"/>
+                    </f:facet>
+                    <h:outputText id="k" value="#{lh1.image}"/>
+                </h:column>
+                
+                <h:column id="ll" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Rate"/>
+                    </f:facet>
+                    <h:outputText id="l" value="#{lh1.rate}"/>
+                </h:column>
+                
+                <h:column id="mm" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:outputText style="headerText" value="Status"/>
+                    </f:facet>
+                    <h:outputText id="m" value="#{lh1.status}"/>
+                </h:column>
+                
+                <h:column id="actions" headerClass="headertext">
+                    <f:facet name="header">
+                        <h:commandButton value="Insert New"  action="addWorker.xhtml" immediate="true" />
+                    </f:facet>
+                    <h:commandLink value="Edit" immediate="true"
+                                   actionListener="#{manageWorker.editWorker}" action="editWorker.xhtml"/> -
+                    <h:commandLink value="Delete" actionListener="#{manageWorker.deleteWorker}">
+                        
+                    </h:commandLink>
+                </h:column>
+            </h:dataTable>
+            
+        </h:form>
+    </h:body>
 </html>
